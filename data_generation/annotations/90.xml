@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>90.jpg</filename>
+	<path>C:\Users\Jun Feng\Desktop\commercial-detection\data_generation\images\90.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>521</width>
+		<height>483</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>cup</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>31</xmin>
+			<ymin>302</ymin>
+			<xmax>92</xmax>
+			<ymax>410</ymax>
+		</bndbox>
+	</object>
+</annotation>

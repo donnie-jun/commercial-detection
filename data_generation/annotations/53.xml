@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>53.jpg</filename>
+	<path>C:\Users\Jun Feng\Desktop\commercial-detection\data_generation\images\53.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>600</width>
+		<height>337</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>box</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>29</xmin>
+			<ymin>88</ymin>
+			<xmax>144</xmax>
+			<ymax>170</ymax>
+		</bndbox>
+	</object>
+</annotation>

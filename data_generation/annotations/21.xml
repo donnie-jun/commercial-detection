@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>21.jpg</filename>
+	<path>C:\Users\Jun Feng\Desktop\commercial-detection\data_generation\images\21.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>663</width>
+		<height>499</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>cup</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>385</xmin>
+			<ymin>139</ymin>
+			<xmax>477</xmax>
+			<ymax>294</ymax>
+		</bndbox>
+	</object>
+</annotation>

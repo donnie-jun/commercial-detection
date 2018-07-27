@@ -21,15 +21,17 @@ from object_detection.utils import dataset_util
 from collections import namedtuple, OrderedDict
 
 flags = tf.app.flags
-flags.DEFINE_string('csv_input', '', 'Path to the CSV input')
-flags.DEFINE_string('output_path', '', 'Path to output TFRecord')
+flags.DEFINE_string('csv_input', 'generated_training_data/training_data.csv', 'Path to the CSV input')
+flags.DEFINE_string('output_path', 'generated_training_data/training_data.record', 'Path to output TFRecord')
 FLAGS = flags.FLAGS
 
 
 # TO-DO replace this with label map
 def class_text_to_int(row_label):
-    if row_label == 'raccoon':
+    if row_label == 'cup':
         return 1
+    if row_label == 'box':
+        return 2
     else:
         None
 

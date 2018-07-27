@@ -28,7 +28,9 @@ def xml_to_csv(path):
 def main():
     image_path = os.path.join(os.getcwd(), 'annotations')
     xml_df = xml_to_csv(image_path)
-    xml_df.to_csv('raccoon_labels.csv', index=None)
+    if not os.path.isdir('generated_training_data/'):
+        os.mkdir('generated_training_data')
+    xml_df.to_csv('generated_training_data/training_data.csv', index=None)
     print('Successfully converted xml to csv.')
 
 
