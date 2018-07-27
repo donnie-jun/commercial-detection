@@ -30,7 +30,7 @@ FLAGS = flags.FLAGS
 def class_text_to_int(row_label):
     if row_label == 'cup':
         return 1
-    if row_label == 'box':
+    elif row_label == 'box':
         return 2
     else:
         None

@@ -29,10 +29,10 @@ from object_detection.utils import visualization_utils as vis_util
 # What model to download.
 
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
-PATH_TO_CKPT = 'outputdir/frozen_inference_graph.pb'
+PATH_TO_CKPT = 'exported_model/frozen_inference_graph.pb'
 
 # List of the strings that is used to add correct label for each box.
-PATH_TO_LABELS = os.path.join('data', 'object-detection.pbtxt')
+PATH_TO_LABELS = os.path.join('training/config', 'object-detection.pbtxt')
 
 NUM_CLASSES = 1
 

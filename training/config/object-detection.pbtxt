@@ -1,8 +1,10 @@
 item {
   id: 1
   name: 'cup'
+  display_name: 'cup'
 }
 item {
   id: 2
   name: 'box'
+  display_name: 'box'
 }
