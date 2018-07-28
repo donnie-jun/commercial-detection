@@ -2,7 +2,6 @@
 
 ### Objective
 Here the challenge is to:
-
 1. Identify when an embedded commercial appears;
 2. Identify the company name of this commercial;
 3. Identify the product that the commercial is selling;
@@ -13,14 +12,12 @@ A video of a TV advertisement is selected as an example target (video.mp4)
 Training dataset (data_generation/images) was obtained from google images. 
 Some images were screenshots of the web page, the random stuff around the object can serve as a blank object reference, which turns out improved accuracy than simply saving those images.
 
-Method: Tensorflow object detection API
+API: Tensorflow object detection
 Starting Model: ssd_mobilenet_v1_ppn_shared_box_predictor_300x300_coco14_sync_2018_07_03
 Image labelling tool: LabelImg
 Data format: tfrecord (converted from xml using xml_to_csv.py and generate_tfrecord.py)
 
 ### Steps
-Steps:
-
 1. Label images using LabelImg
 2. Run xml_to_csv.py to get generated_training_data/training_data.csv
 3. Run generate_tfrecord.py to get generated_training_data/training_data.record
@@ -33,8 +30,9 @@ Steps:
 
 ### Results
 Obtained 50 fps on i5-6400+GTX 970 Still need to improve accuracy, but the exported_model_hougumixi0727 froze graph (trained with only 91 labeled images) can already mostly detect all advertised product
+
 ![](https://github.com/donnie-jun/commercial-detection/blob/master/outputfigure.jpg)
 > Detected cup soup (an advertised product)
-![](https://github.com/donnie-jun/commercial-detection/blob/master/plot.jpg)
 
+![](https://github.com/donnie-jun/commercial-detection/blob/master/plot.jpg)
 > Showing the appearance timing of the advertised product and detection confidence
