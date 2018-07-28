@@ -121,6 +121,16 @@ vis_util.visualize_boxes_and_labels_on_image_array(
     use_normalized_coordinates=True,
     min_score_thresh=0.5,
     line_thickness=3)
-plt.figure(figsize=IMAGE_SIZE)
+
+width=image_np.shape[1]
+height=image_np.shape[0]
+AR=width/height
+imgsize=(8*AR,8)
+fig=plt.figure(figsize=imgsize,frameon=False)
+fig.add_subplot(111)
+fig.subplots_adjust(left=0, right=1, bottom=0, top=1)
+plt.axis('off')
 plt.imshow(image_np)
-plt.savefig('testimage/outputfigure.jpg')
+fig.savefig('testimage/outputfigure.jpg')
+plt.show()
+plt.close()

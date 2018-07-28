@@ -27,7 +27,6 @@ print(category_index)
 
 #######################################################################
 
-IMAGE_SIZE = (12, 8) # size of output image
 CONFIDENCE_FACTOR = 0.4
 
 def detect_alert(boxes, classes, scores, category_index,
@@ -151,7 +150,7 @@ def main():
     with detection_graph.as_default():
 
         if True: # Toggle on/off an image-test step before video-test
-            image = Image.open('image.jpg')
+            image = Image.open('testimage/image.jpg')
             image_np = load_image_into_numpy_array(image)
             output_dict = run_inference_for_single_image(image_np, sess, detection_graph)
             print(output_dict)
@@ -166,13 +165,23 @@ def main():
                 use_normalized_coordinates=True,
                 min_score_thresh=0.5,
                 line_thickness=3)
-            plt.figure(figsize=IMAGE_SIZE,frameon=False).set_size_inches(12,8)
-            plt.imshow(image_np)
+
+            # Saving the labeled image
+            width=image_np.shape[1]
+            height=image_np.shape[0]
+            AR=width/height
+            imgsize=(8*AR,8)
+            fig=plt.figure(figsize=imgsize,frameon=False)
+            fig.add_subplot(111)
+            fig.subplots_adjust(left=0, right=1, bottom=0, top=1)
             plt.axis('off')
-            plt.savefig('outputfigure.jpg',bbox_inches='tight')
+            plt.imshow(image_np)
+            fig.savefig('testimage/outputfigure.jpg')
+            plt.show()
+            plt.close()
 
             print("Image test completed, enter continue to video test...")
-            input()
+            input() # Wait input to continue
         
         while success:
             if count==1: tic0=time.time()
@@ -228,7 +237,7 @@ def main():
     plt.plot(cartimelist,carscorelist)
     plt.xlabel('Time(s)')
     plt.ylabel('Confidence(%)')
-    plt.savefig('plot.jpg')
+    plt.savefig('testimage/plot.jpg')
     plt.close()
     
 if __name__ == '__main__':
