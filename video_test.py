@@ -28,7 +28,7 @@ print(category_index)
 #######################################################################
 
 IMAGE_SIZE = (12, 8) # size of output image
-CONFIDENCE_FACTOR = 0.3
+CONFIDENCE_FACTOR = 0.4
 
 def detect_alert(boxes, classes, scores, category_index,
                  max_boxes_to_draw=10, min_score_thresh=0.6):
@@ -150,38 +150,48 @@ def main():
     carscorelist=[]
     with detection_graph.as_default():
 
-        
-        image = Image.open('image.jpg')
-        image_np = load_image_into_numpy_array(image)
-        output_dict = run_inference_for_single_image(image_np, sess, detection_graph)
-        print(output_dict)
-        # Visualization of the results of a detection.
-        vis_util.visualize_boxes_and_labels_on_image_array(
-            image_np,
-            output_dict['detection_boxes'],
-            output_dict['detection_classes'],
-            output_dict['detection_scores'],
-            category_index,
-            #instance_masks=output_dict.get('detection_masks'),
-            use_normalized_coordinates=True,
-            min_score_thresh=0.5,
-            line_thickness=3)
-        plt.figure(figsize=IMAGE_SIZE)
-        plt.imshow(image_np)
-        plt.savefig('outputfigure.jpg')
+        if False: # Toggle on/off an image-test step before video-test
+            image = Image.open('image.jpg')
+            image_np = load_image_into_numpy_array(image)
+            output_dict = run_inference_for_single_image(image_np, sess, detection_graph)
+            print(output_dict)
+            # Visualization of the results of a detection.
+            vis_util.visualize_boxes_and_labels_on_image_array(
+                image_np,
+                output_dict['detection_boxes'],
+                output_dict['detection_classes'],
+                output_dict['detection_scores'],
+                category_index,
+                #instance_masks=output_dict.get('detection_masks'),
+                use_normalized_coordinates=True,
+                min_score_thresh=0.5,
+                line_thickness=3)
+            plt.figure(figsize=IMAGE_SIZE)
+            plt.imshow(image_np)
+            plt.savefig('outputfigure.jpg')
 
-        print("Image test completed, enter continue to video test...")
-        input()
+            print("Image test completed, enter continue to video test...")
+            input()
         
         while success:
             if count==1: tic0=time.time()
             count += 1
             tic=time.time()
             success, image = video.read()
-            image = cv2.resize(image,(300,300))
+
+            #image = cv2.resize(image,(300,300))
+            
             if count%1==0 and success:
+                imageRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
                 frametime=video.get(cv2.CAP_PROP_POS_MSEC)/1000
-                output_dict = run_inference_for_single_image(image, sess, detection_graph)
+                #plt.figure(figsize=IMAGE_SIZE,frameon=False)
+                #plt.imshow(image)
+                #plt.axis('off')
+                #plt.savefig('image_series/Time'+str(frametime)+'s.jpg',
+                #            bbox_inches='tight')
+                #plt.close()
+                
+                output_dict = run_inference_for_single_image(imageRGB, sess, detection_graph)
                 toc=time.time()
                 vis_util.visualize_boxes_and_labels_on_image_array(
                     image,
@@ -198,8 +208,8 @@ def main():
                 plt.imshow(image)
                 plt.savefig('Time'+str(frametime)+'s.jpg')
                 plt.close()
-                
                 """
+                
                 cv2.imshow("result", image)
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
@@ -207,6 +217,7 @@ def main():
                 print("Inference time: {}, detected: {}".format(toc-tic, output_dict['num_detections']))
 
                 prob = max(output_dict['detection_scores'])
+                if prob<CONFIDENCE_FACTOR: prob=0
                     
                 list.append(cartimelist,frametime)
                 list.append(carscorelist,prob)
