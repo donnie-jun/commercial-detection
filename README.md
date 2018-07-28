@@ -43,16 +43,17 @@ Dependencies:
 9. Run video_test.py to test result
 
 ### Results
-Obtained 50 fps on i5-6400+GTX 970 Still need to improve accuracy, but the exported_model_hougumixi0727 froze graph (trained with only 91 labeled images) can already mostly detect all advertised product
+Obtained 50 fps on i5-6400 + GTX 970. 
+Still need to improve accuracy, but the exported_model_trained froze graph (trained with only 91 labeled images) can already mostly detect all advertised product
 
-![](https://github.com/donnie-jun/commercial-detection/blob/master/outputfigure1.jpg)
+![](https://github.com/donnie-jun/commercial-detection/blob/master/testimage/outputfigure1.jpg)
 > Detected cup soup (an advertised product)
 
-![](https://github.com/donnie-jun/commercial-detection/blob/master/outputfigure2.jpg)
+![](https://github.com/donnie-jun/commercial-detection/blob/master/testimage/outputfigure2.jpg)
 > Detected overlapped cup soup and its box
 
-![](https://github.com/donnie-jun/commercial-detection/blob/master/plot.jpg)
+![](https://github.com/donnie-jun/commercial-detection/blob/master/testimage/plot.jpg)
 > Showing the appearance timing of the advertised product and detection confidence
 
-![](https://github.com/donnie-jun/commercial-detection/blob/master/training_loss.JPG)
+![](https://github.com/donnie-jun/commercial-detection/blob/master/testimage/training_loss.JPG)
 > Training loss over time (exported model was picked at step 17150)

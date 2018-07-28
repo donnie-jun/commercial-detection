@@ -29,12 +29,12 @@ from object_detection.utils import visualization_utils as vis_util
 # What model to download.
 
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
-PATH_TO_CKPT = 'exported_model/frozen_inference_graph.pb'
+PATH_TO_CKPT = 'exported_model_trained/frozen_inference_graph.pb'
 
 # List of the strings that is used to add correct label for each box.
 PATH_TO_LABELS = os.path.join('training/config', 'object-detection.pbtxt')
 
-NUM_CLASSES = 1
+NUM_CLASSES = 2
 
 detection_graph = tf.Graph()
 with detection_graph.as_default():
@@ -53,10 +53,9 @@ def load_image_into_numpy_array(image):
   return np.array(image.getdata()).reshape(
       (im_height, im_width, 3)).astype(np.uint8)
 
-# For the sake of simplicity we will use only 2 images:
-# image1.jpg
-# image2.jpg
-# If you want to test the code with your images, just add path to the images to the TEST_IMAGE_PATHS.
+# For the sake of simplicity we will use only 1 image:
+# image.jpg
+# If you want to test the code with your images, just add path to the images to the TEST_IMAGE_PATH.
 
 # Size, in inches, of the output images.
 IMAGE_SIZE = (12, 8)
@@ -107,7 +106,7 @@ def run_inference_for_single_image(image, graph):
         output_dict['detection_masks'] = output_dict['detection_masks'][0]
   return output_dict
 
-image = Image.open('image.jpg')
+image = Image.open('testimage/image.jpg')
 image_np = load_image_into_numpy_array(image)
 output_dict = run_inference_for_single_image(image_np, detection_graph)
 print(output_dict)
@@ -124,4 +123,4 @@ vis_util.visualize_boxes_and_labels_on_image_array(
     line_thickness=3)
 plt.figure(figsize=IMAGE_SIZE)
 plt.imshow(image_np)
-plt.savefig('outputfigure.jpg')
+plt.savefig('testimage/outputfigure.jpg')

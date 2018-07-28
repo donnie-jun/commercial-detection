@@ -12,7 +12,7 @@ from object_detection.utils import visualization_utils as vis_util
 
 ################### Definitions for model #############################
 
-PATH_TO_CKPT = 'exported_model/frozen_inference_graph.pb'
+PATH_TO_CKPT = 'exported_model_trained/frozen_inference_graph.pb'
 PATH_TO_LABELS = os.path.join('training/config', 'object-detection.pbtxt')
 NUM_CLASSES = 2
 #PATH_TO_CKPT = 'ssd_mobilenet_v1_ppn_coco/frozen_inference_graph.pb'
