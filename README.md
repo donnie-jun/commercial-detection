@@ -9,13 +9,27 @@ Here the challenge is to:
 
 ### Methods
 A video of a TV advertisement is selected as an example target (video.mp4) 
+
 Training dataset (data_generation/images) was obtained from google images. 
+
 Some images were screenshots of the web page, the random stuff around the object can serve as a blank object reference, which turns out improved accuracy than simply saving those images.
 
 API: Tensorflow object detection
+
 Starting Model: ssd_mobilenet_v1_ppn_shared_box_predictor_300x300_coco14_sync_2018_07_03
+
 Image labelling tool: LabelImg
+
 Data format: tfrecord (converted from xml using xml_to_csv.py and generate_tfrecord.py)
+
+Dependencies:
+- Tensorflow
+- Object detection API
+- openCV
+- pillow
+- protobuf
+- pandas
+- etc...
 
 ### Steps
 1. Label images using LabelImg
