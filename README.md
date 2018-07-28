@@ -36,3 +36,6 @@ Obtained 50 fps on i5-6400+GTX 970 Still need to improve accuracy, but the expor
 
 ![](https://github.com/donnie-jun/commercial-detection/blob/master/plot.jpg)
 > Showing the appearance timing of the advertised product and detection confidence
+
+![](https://github.com/donnie-jun/commercial-detection/blob/master/training_loss.jpg)
+> Training loss over time (exported model was picked at step 17150)
