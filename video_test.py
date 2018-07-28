@@ -150,7 +150,7 @@ def main():
     carscorelist=[]
     with detection_graph.as_default():
 
-        if False: # Toggle on/off an image-test step before video-test
+        if True: # Toggle on/off an image-test step before video-test
             image = Image.open('image.jpg')
             image_np = load_image_into_numpy_array(image)
             output_dict = run_inference_for_single_image(image_np, sess, detection_graph)
@@ -166,9 +166,10 @@ def main():
                 use_normalized_coordinates=True,
                 min_score_thresh=0.5,
                 line_thickness=3)
-            plt.figure(figsize=IMAGE_SIZE)
+            plt.figure(figsize=IMAGE_SIZE,frameon=False).set_size_inches(12,8)
             plt.imshow(image_np)
-            plt.savefig('outputfigure.jpg')
+            plt.axis('off')
+            plt.savefig('outputfigure.jpg',bbox_inches='tight')
 
             print("Image test completed, enter continue to video test...")
             input()
