@@ -31,8 +31,11 @@ Data format: tfrecord (converted from xml using xml_to_csv.py and generate_tfrec
 ### Results
 Obtained 50 fps on i5-6400+GTX 970 Still need to improve accuracy, but the exported_model_hougumixi0727 froze graph (trained with only 91 labeled images) can already mostly detect all advertised product
 
-![](https://github.com/donnie-jun/commercial-detection/blob/master/outputfigure.jpg)
+![](https://github.com/donnie-jun/commercial-detection/blob/master/outputfigure1.jpg)
 > Detected cup soup (an advertised product)
+
+![](https://github.com/donnie-jun/commercial-detection/blob/master/outputfigure2.jpg)
+> Detected overlapped cup soup and its box
 
 ![](https://github.com/donnie-jun/commercial-detection/blob/master/plot.jpg)
 > Showing the appearance timing of the advertised product and detection confidence
