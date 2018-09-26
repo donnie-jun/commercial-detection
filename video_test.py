@@ -136,10 +136,10 @@ def main():
             serialized_graph = fid.read()
             od_graph_def.ParseFromString(serialized_graph)
             tf.import_graph_def(od_graph_def, name='')
-    config = tf.ConfigProto(
-        device_count = {'GPU': 1}
-    )
-    sess=tf.Session(graph=detection_graph,config=config)
+    #config = tf.ConfigProto(
+    #    device_count = {'GPU': 1}
+    #)
+    sess=tf.Session(graph=detection_graph)
 
     video = cv2.VideoCapture('video.mp4') #change the path of the video
     count = 0
@@ -149,7 +149,7 @@ def main():
     carscorelist=[]
     with detection_graph.as_default():
 
-        if True: # Toggle on/off an image-test step before video-test
+        if False: # Toggle on/off an image-test step before video-test
             image = Image.open('testimage/image.jpg')
             image_np = load_image_into_numpy_array(image)
             output_dict = run_inference_for_single_image(image_np, sess, detection_graph)
@@ -218,11 +218,12 @@ def main():
                 plt.imshow(image)
                 plt.savefig('Time'+str(frametime)+'s.jpg')
                 plt.close()
-                """
+                
                 
                 cv2.imshow("result", image)
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
+                """
                 
                 print("Inference time: {}, detected: {}".format(toc-tic, output_dict['num_detections']))
 
@@ -233,12 +234,14 @@ def main():
                 list.append(carscorelist,prob)
     toc0=time.time()
     print('total time: '+str(toc0-tic0)+'s ,average:'+str(1000*(toc0-tic0)/(count-1))+' ms')
+    """
     plt.figure()
     plt.plot(cartimelist,carscorelist)
     plt.xlabel('Time(s)')
     plt.ylabel('Confidence(%)')
     plt.savefig('testimage/plot.jpg')
     plt.close()
+    """
     
 if __name__ == '__main__':
     main()
